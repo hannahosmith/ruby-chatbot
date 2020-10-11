@@ -11,6 +11,8 @@ socket.puts "NICK #{nickname}"
 socket.puts "USER #{nickname} 0 * #{nickname}"
 socket.puts "JOIN #{channel}"
 
+# socket.puts "PRIVMSG #{channel} :hey Charlie where did that weird man with the hat go?"
+
 while message = socket.gets do
   puts message
 
@@ -18,6 +20,11 @@ while message = socket.gets do
     server = message.split(':').last
     puts "PONG #{server}"
     socket.puts "PONG #{server}"
+  end
+
+  if message.match('How are you?')
+    puts "I'm fine boy. How r u"
+    socket.puts "PRIVMSG #{channel} :I'm fine boy. How r u"
   end
 
 end
