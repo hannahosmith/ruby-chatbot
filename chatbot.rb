@@ -22,7 +22,7 @@ while message = socket.gets do
     socket.puts "PONG #{server}"
   end
 
-  if message.match('How are you?')
+  if message.downcase.match('how are you?')
     puts "I'm fine boy. How r u"
     socket.puts "PRIVMSG #{channel} :I'm fine boy. How r u"
   end
